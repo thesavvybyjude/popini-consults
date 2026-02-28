@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
@@ -9,7 +10,16 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
 
                     <div className="md:col-span-1">
-                        <Link href="/" className="inline-block mb-6">
+                        <Link href="/" className="flex items-center gap-3 group mb-6">
+                            <div className="relative w-12 h-12 flex shrink-0 transition-transform duration-500 group-hover:scale-105">
+                                <Image
+                                    src="/dark gray.png"
+                                    alt="Popini Consults Logo"
+                                    fill
+                                    className="object-contain"
+                                    sizes="48px"
+                                />
+                            </div>
                             <div className="flex flex-col">
                                 <span className="font-heading font-bold text-2xl tracking-tight text-white uppercase">Popini</span>
                                 <span className="font-sans text-[0.65rem] tracking-[0.2em] text-[var(--color-brand-gold)] uppercase mt-[2px]">Consults</span>

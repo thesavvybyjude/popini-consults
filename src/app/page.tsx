@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 export default function Home() {
@@ -27,7 +28,15 @@ export default function Home() {
           animate={{ scale: 1.05 }}
           transition={{ duration: 10, ease: "linear", repeat: Infinity, repeatType: "mirror" }}
         >
-          {/* Replace with actual high-end architecture image */}
+          <Image
+            src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop"
+            alt="Luxury Architecture"
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+            quality={90}
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[var(--color-brand-charcoal)]" />
         </motion.div>
 
@@ -124,9 +133,15 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               viewport={{ once: true }}
-              className="aspect-square bg-gray-100 rounded-sm"
+              className="aspect-square bg-gray-100 rounded-sm relative overflow-hidden"
             >
-              {/* Image Placeholder */}
+              <Image
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop"
+                alt="Architecture Studio"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </motion.div>
           </div>
         </div>
@@ -153,9 +168,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { title: "Contemporary Residential Villa", location: "Abuja" },
-              { title: "Mixed‑Use Commercial Plaza", location: "Lagos" },
-              { title: "Corporate Office Complex", location: "Kano" }
+              { title: "Contemporary Residential Villa", location: "Abuja", image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1000&auto=format&fit=crop" },
+              { title: "Mixed‑Use Commercial Plaza", location: "Lagos", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop" },
+              { title: "Corporate Office Complex", location: "Kano", image: "https://images.unsplash.com/photo-1577495508048-b635879837f1?q=80&w=1000&auto=format&fit=crop" }
             ].map((project, idx) => (
               <motion.div
                 key={idx}
@@ -163,18 +178,27 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
                 viewport={{ once: true }}
-                className="group cursor-pointer"
               >
-                <div className="aspect-[4/5] bg-gray-800 rounded-sm mb-6 overflow-hidden relative">
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/50 transition-colors duration-500 z-10" />
-                  {/* Background Image Element would scale slightly on hover */}
-                  <div className="absolute inset-0 bg-neutral-700 w-full h-full transform group-hover:scale-105 transition-transform duration-1000 ease-[var(--ease-architectural)]" />
-                  <div className="absolute inset-0 z-20 p-8 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-4 group-hover:translate-y-0">
-                    <p className="text-[var(--color-brand-gold)] font-bold tracking-widest text-xs uppercase mb-2">View Project</p>
+                <Link
+                  href={`/projects/${project.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                  className="group cursor-pointer block"
+                >
+                  <div className="aspect-[4/5] bg-gray-800 rounded-sm mb-6 overflow-hidden relative">
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/50 transition-colors duration-500 z-10" />
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover transform group-hover:scale-105 transition-transform duration-1000 ease-[var(--ease-architectural)]"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                    <div className="absolute inset-0 z-20 p-8 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-4 group-hover:translate-y-0">
+                      <p className="text-[var(--color-brand-gold)] font-bold tracking-widest text-xs uppercase mb-2">View Project</p>
+                    </div>
                   </div>
-                </div>
-                <h3 className="text-xl font-heading font-medium mb-1">{project.title}</h3>
-                <p className="text-gray-400 text-sm font-light">{project.location}</p>
+                  <h3 className="text-xl font-heading font-medium mb-1">{project.title}</h3>
+                  <p className="text-gray-400 text-sm font-light">{project.location}</p>
+                </Link>
               </motion.div>
             ))}
           </div>

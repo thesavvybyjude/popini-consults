@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
@@ -33,13 +34,19 @@ export default function Navbar() {
                     }`}
             >
                 <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
-                    {/* Logo Placeholder */}
-                    <Link href="/" className="flex items-center gap-2 group">
-                        <div className="relative w-8 h-8 rounded bg-[var(--color-brand-charcoal)] overflow-hidden flex items-center justify-center shrink-0 group-hover:bg-[var(--color-brand-indigo)] transition-colors duration-500">
-                            <span className="text-white font-heading font-bold text-lg">P</span>
+                    {/* Logo */}
+                    <Link href="/" className="flex items-center gap-3 group">
+                        <div className="relative w-10 h-10 flex shrink-0 transition-transform duration-500 group-hover:scale-105">
+                            <Image
+                                src="/blue.png"
+                                alt="Popini Consults Logo"
+                                fill
+                                className="object-contain"
+                                sizes="40px"
+                            />
                         </div>
                         <div className="flex flex-col">
-                            <span className="font-heading font-bold text-lg leading-none tracking-tight text-[var(--color-brand-charcoal)] uppercase">Popini</span>
+                            <span className="font-heading font-bold text-xl leading-none tracking-tight text-[var(--color-brand-charcoal)] uppercase">Popini</span>
                             <span className="font-sans text-[0.6rem] tracking-[0.2em] text-gray-500 uppercase mt-[2px]">Consults</span>
                         </div>
                     </Link>
