@@ -30,9 +30,9 @@ export default function About() {
     ];
 
     const team = [
-        { name: "David Popini", role: "Principal Architect", bio: "With over 15 years in luxury residential and sustainable commercial design, David leads the creative direction.", credentials: "M.Arch, RIBA, ARCON" },
-        { name: "Sarah Okafor", role: "Head of Urban Strategy", bio: "Sarah integrates structural complexities with human-centric urban planning principles.", credentials: "MSc Urban Design" },
-        { name: "Michael Adeyemi", role: "Lead Interior Architect", bio: "Specializing in spatial fluidity, Michael bridges the gap between the building envelope and human experience.", credentials: "BA Interior Architecture" }
+        { name: "Timload Sheni", role: "Chief Executive Officer (CEO)", bio: "Leading the strategic vision and executive direction of POPINI Consults, Timload ensures every project aligns with our legacy of excellence.", credentials: "CEO" },
+        { name: "Ringtong Sheni", role: "Chief Operating Officer (COO)", bio: "Ringtong drives operational execution, seamlessly integrating interdisciplinary teams to deliver complex projects on time and budget.", credentials: "COO" },
+        { name: "Jude Thompson", role: "Chief Technology Officer (CTO)", bio: "Jude pioneers our technological advancement, integrating cutting-edge architectural software, sustainable systems, and smart-city innovations.", credentials: "CTO" }
     ];
 
     return (
