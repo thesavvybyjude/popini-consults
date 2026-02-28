@@ -1,91 +1,117 @@
-# POPINI Consults Website
+# POPINI Consults Website - Build & Architecture Documentation
 
-![POPINI Consults Logo](public/logo.png) <!-- Assuming a logo will be here based on the assets -->
+![POPINI Consults Logo](public/logo.png)
 
-**Built for Legacy.** A premium, Next.js-powered web application for POPINI Consults, delivering world‑class architectural and strategic design consultancy to Africa’s evolving urban and commercial landscape.
+This document is the definitive guide to the **build process**, **architecture**, and **technical stack** for the POPINI Consults web application. It is tailored for developers and CI/CD operations managing the deployment.
 
-## 🌟 Design Philosophy
+---
 
-The POPINI Consults digital experience is crafted to feel **Calm, Premium, Confident, Intentional, and Architectural.** 
+## 🛠 Tech Stack Overview
 
-The interface relies on precise typography, generous whitespace, constrained luxury brand colors, and structural micro-interactions. The motion philosophy avoids anything flashy or bouncy, instead preferring soft easings, subtle fades, gentle slides, and architectural camera-like movements.
+The project relies on a modern, high-performance React ecosystem utilizing the Next.js App Router:
 
-## 🛠 Tech Stack
+- **Core Framework:** [Next.js](https://nextjs.org/) (v16.1.6)
+- **UI & Components:** [React](https://react.dev/) & React-DOM (v19.2.3)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) with PostCSS integration (`@tailwindcss/postcss`)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/) (v12.34.3)
+- **Fluid Scrolling:** [Lenis](https://lenis.darkroom.engineering/) (v1.3.17)
+- **Icons:** [Lucide React](https://lucide.dev/) (v0.575.0)
+- **Utility:** `clsx` and `tailwind-merge` for dynamic classes
+- **Language:** TypeScript 5+
 
-This project is built with a modern, high-performance React ecosystem tailored for elite visual fidelity and SEO:
+---
 
-- **Framework:** [Next.js 15](https://nextjs.org/) (App Router)
-- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
-- **Motion & Animations:** [Framer Motion](https://www.framer.com/motion/)
-- **Smooth Scrolling:** [Lenis](https://lenis.darkroom.engineering/)
-- **Icons:** [Lucide React](https://lucide.dev/)
-- **Language:** TypeScript
+## ⚙️ The Build Process
 
-## 📂 Project Structure
+The application is configured to deploy seamlessly on **Netlify**. Everything related to routing, static generation, and the build pipeline is tailored for this environment.
+
+### Build Configuration (`netlify.toml`)
+
+Netlify serves as our primary host. The core build instructions define the sequence in our `netlify.toml`:
+
+```toml
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+```
+
+- **Build Command:** `npm run build` uses the internal Next.js compiler.
+- **Publish Directory:** The `.next` folder contains the compiled, production-ready assets.
+- **Next.js Plugin:** The `@netlify/plugin-nextjs` package is essential. It provisions Netlify edge functions and handlers to correctly serve Next.js App Router features, Server Actions, and dynamic rendering.
+
+### Next.js Image Optimization (`next.config.ts`)
+
+During the build and runtime, image optimization relies on the Next.js `<Image>` component. To prevent untrusted sources and allow external mockups/assets, `images.unsplash.com` is explicitly whitelisted.
+
+```typescript
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+    ],
+  },
+};
+
+export default nextConfig;
+```
+
+---
+
+## 🚀 Local Environment Setup & Build Steps
+
+To compile and verify the build on a local machine, execute the following:
+
+1. **Install Dependencies:**
+   Ensure Node 20+ is active, then run:
+   ```bash
+   npm install
+   ```
+2. **Start the Development Server:**
+   This utilizes Hot Module Replacement for rapid iteration:
+   ```bash
+   npm run dev
+   ```
+   > Environment available at [http://localhost:3000](http://localhost:3000)
+
+3. **Execute a Production Build Locally:**
+   It is highly recommended to test the compiler and type-checker before pushing to the Netlify CI:
+   ```bash
+   npm run lint
+   npm run build
+   ```
+4. **Test the Production Build:**
+   To guarantee the site operates as expected after the `.next` output directory is generated:
+   ```bash
+   npm run start
+   ```
+
+---
+
+## 📂 Build Structure & Logic
+
+When modifying the build or logic, keep the project architecture in mind:
 
 ```text
 src/
-├── app/                  # Next.js App Router pages
-│   ├── about/            # Brand Story & Core Values
-│   ├── consultancy/      # Strategic Focus & Process
-│   ├── contact/          # Forms & WhatsApp Integration
-│   ├── projects/         # Filterable Selected Works Gallery
-│   ├── services/         # Architectural & Consultancy Pillars
-│   ├── globals.css       # Global structural styles & Lenis config
-│   └── layout.tsx        # Root layout with fonts & wrappers
-├── components/           
-│   └── layout/           # Global structural components
-│       ├── Footer.tsx
-│       ├── Navbar.tsx
-│       ├── PageTransition.tsx  # Framer Motion page wrapper
-│       └── SmoothScroll.tsx    # Lenis initialization wrapper
-└── lib/                  # Utility functions (e.g., tailwind-merge)
+├── app/                  # Primary Next.js App Router topology
+│   ├── globals.css       # Tailwind v4 configuration engine
+│   └── layout.tsx        # High-order providers (Lenis, Motion Hooks)
+├── components/layout/    
+│   ├── PageTransition.tsx  # Framer Motion page wrapper (`AnimatePresence`)
+│   └── SmoothScroll.tsx    # Initialization wrapper for Lenis
+└── lib/                  # Centralized logic (`clsx` + `tailwind-merge`)
 ```
 
-## ✨ Core Features
+### Note on Styling in v4 Build
 
-- **Architectural Motion System:** Utilizing a custom cubic-bezier easing (`0.16, 1, 0.3, 1`) globally via Framer Motion to ensure all transforms, fades, and scale events mimic premium cinematic movement.
-- **Buttery Smooth Scrolling:** Lenis is implemented globally to hijack native scrolling, replacing it with momentum-based, fluid vertical tracking.
-- **Dynamic Routing Transitions:** `AnimatePresence` manages page unmounts and mounts, executing soft, upward-sliding fades to prevent harsh page loads.
-- **Responsive "Slide-In" Navigation:** Mobile menus avoid standard dropdowns in favor of a full-screen, 100vh charcoal overlay with staggered link appearances.
-- **Context-Aware Interactions:** For the Nigerian market, a highly prominent WhatsApp floating prompt sits alongside the Contact form for rapid response times.
+Since this application utilizes **Tailwind CSS v4**, constraints are written inline utilizing the `@theme inline` directive within `src/app/globals.css`. Ensure build scripts do not rely on looking for a legacy `tailwind.config.ts`.
 
-## 🚀 Getting Started
-
-First, ensure you have Node.js installed. Then, clone the repository and install the dependencies:
-
-```bash
-# Install dependencies
-npm install
-
-# Run the development server
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## 🎨 Theme Configuration
-
-The aesthetic constraints are strictly enforced via custom properties injected directly into the Tailwind `@theme` directive inside `src/app/globals.css`:
-
-```css
-@theme inline {
-  --color-brand-charcoal: #232528;
-  --color-brand-indigo: #2a2a72;
-  --color-brand-sky: #089efc;
-  --color-brand-gold: #fea403;
-  --color-brand-soft: #eafbff;
-  --font-heading: var(--font-manrope);
-  --font-sans: var(--font-inter);
-  --ease-architectural: cubic-bezier(0.16, 1, 0.3, 1);
-}
-```
-
-## 📈 SEO & Performance
-
-- Fully statically generated (SSG) via Next.js where possible for maximum speed and indexing.
-- Semantic HTML tags (`<section>`, `<nav>`, `<main>`) utilized thoroughly.
-- Next.js Fonts optimize `Manrope` and `Inter` at build time, preventing layout shifts.
+---
 
 ## 📄 License
 Copyright © POPINI Consults. All rights reserved.

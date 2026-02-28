@@ -78,6 +78,24 @@ export default function Contact() {
                                         </p>
                                     </div>
                                 </div>
+
+                                <div className="pt-6 border-t border-gray-100 flex gap-4">
+                                    <a href="#" className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-[var(--color-brand-sky)] hover:border-[var(--color-brand-sky)] transition-all" aria-label="LinkedIn">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                                    </a>
+                                    <a href="#" className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-[var(--color-brand-sky)] hover:border-[var(--color-brand-sky)] transition-all" aria-label="Facebook">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                                    </a>
+                                    <a href="#" className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-[var(--color-brand-sky)] hover:border-[var(--color-brand-sky)] transition-all" aria-label="Instagram">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                    </a>
+                                </div>
+                                <div className="mt-2 flex">
+                                    <a href="/POPINI_Consults_Profile.pdf" download className="flex items-center gap-3 px-6 py-3 border border-[var(--color-brand-charcoal)] text-[var(--color-brand-charcoal)] font-medium hover:bg-[var(--color-brand-charcoal)] hover:text-white transition-colors rounded-sm group">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-y-1 transition-transform"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                        Download Corporate Profile
+                                    </a>
+                                </div>
                             </div>
 
                             {/* Floating WhatsApp Prompt Placeholder */}
@@ -101,7 +119,8 @@ export default function Contact() {
                             viewport={{ once: true, margin: "-100px" }}
                             className="bg-white p-10 border border-gray-100 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] rounded-sm"
                         >
-                            <h3 className="text-2xl font-heading font-semibold text-[var(--color-brand-charcoal)] mb-8">Send us a message</h3>
+                            <h3 className="text-2xl font-heading font-semibold text-[var(--color-brand-charcoal)] mb-2">Request a Design Consultation</h3>
+                            <p className="text-gray-500 font-light mb-8">Discuss your vision with our architectural advisors.</p>
 
                             <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

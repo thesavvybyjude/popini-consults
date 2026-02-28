@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 
-// Mock data store for dynamic routing with the new rich architectural schema
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const PROJECT_DATA: Record<string, any> = {
     "luxury-private-residence": {
         overview: {

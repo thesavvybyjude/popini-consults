@@ -28,6 +28,17 @@ export default function Footer() {
                         <p className="text-sm font-light leading-relaxed text-gray-400 max-w-xs">
                             Premium architectural design and strategic consultancy for visionary African developments. Built for Legacy.
                         </p>
+                        <div className="flex gap-4 mt-8">
+                            <div className="w-12 h-12 border border-gray-700 flex items-center justify-center rounded-sm text-gray-400 font-heading text-[11px] font-bold tracking-widest hover:border-[var(--color-brand-gold)] hover:text-white transition-all cursor-default" title="ARCON Certified">
+                                ARCON
+                            </div>
+                            <div className="w-12 h-12 border border-gray-700 flex items-center justify-center rounded-sm text-gray-400 font-heading text-[11px] font-bold tracking-widest hover:border-[var(--color-brand-gold)] hover:text-white transition-all cursor-default" title="RIBA Chartered Practice">
+                                RIBA
+                            </div>
+                            <div className="w-12 h-12 border border-gray-700 flex items-center justify-center rounded-sm text-gray-400 font-heading text-[11px] font-bold tracking-widest hover:border-[var(--color-brand-gold)] hover:text-white transition-all cursor-default" title="AIA International Region">
+                                AIA
+                            </div>
+                        </div>
                     </div>
 
                     <div>

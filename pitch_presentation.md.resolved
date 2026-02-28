@@ -1,0 +1,111 @@
+````carousel
+# POPINI Consults: Digital Experience Architecture
+**Built for Legacy.**
+
+*A comprehensive overview of the newly engineered web platform for Africa's visionary architectural and strategic design consultancy.*
+
+**Presented by:** T.H.E.S.A. Digital Architecture Team
+**Date:** February 2026
+
+![POPINI Consults Hero](https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop)
+
+<!-- slide -->
+# 🏢 The Brand Philosophy Synthesized
+
+The POPINI Consults digital experience is crafted to feel **Calm, Premium, Confident, Intentional, and Architectural.**
+
+### UI/UX Translation:
+- **Typography:** Precise integration of *Manrope* (Headings) and *Inter* (Sans-serif bodies).
+- **Color Constraints:** Deep Charcoal, Indigo, Azure Sky, and strictly constrained Gold accents representing luxury and trust.
+- **Cinematic Motion:** Soft easings (`cubic-bezier(0.16, 1, 0.3, 1)`), gentle slides, and buttery smooth Lenis-powered scrolling to mimic architectural camera movements. Nothing flashy; only intentionality.
+
+<!-- slide -->
+# 🛠 The Uncompromising Tech Stack
+Our approach ensures elite visual fidelity, absolute performance, and robust SEO for global reach.
+
+> [!TIP]
+> This stack isn't just modern; it's practically future-proof for the 2026 web ecosystem.
+
+- **Engine:** Next.js 16.1 (App Router) - Fully Statically Generated (SSG) where possible.
+- **Visuals:** React 19 & Tailwind CSS v4 (Inline `@theme` driven).
+- **Physics:** Framer Motion v12 & Lenis.
+- **Language:** TypeScript 5+ for zero-defect runtime capability.
+
+<!-- slide -->
+# 🏗 Core Feature: The Projects Portfolio
+Moving beyond a simple gallery into an immersive, data-rich architectural case study system.
+
+| Feature | Execution Strategy |
+| :--- | :--- |
+| **Hover Mechanics** | Image scales gracefully; technical overlays fade in sequentially. |
+| **Rich Overlays** | Reveals *Area, Status*, and *Sustainability Certifications* without a full click. |
+| **Dynamic Routing** | The `/[slug]` architecture supports massive depth: capturing Topography, Climate data, Material Palettes, and mock Interactive Geospatial maps. |
+| **Categorization** | Seamless filtering between Residential, Commercial, and Institutional. |
+
+<!-- slide -->
+# 📐 Core Feature: Design Philosophy & Team
+We don't just show buildings; we narrate how they are conceived.
+
+### The Masterplan Timeline
+An interactive visual flow moving from **Concept → Form & Massing → Materiality → Documentation → Execution.**
+
+### Expertise Grid
+Highlighting interdisciplinary leadership.
+* *David Popini (RIBA, ARCON) - Principal Architect*
+* *Sarah Okafor - Head of Urban Strategy*
+* *Michael Adeyemi - Lead Interior Architect*
+
+<!-- slide -->
+# 🤝 Client Acquisition & Credibility
+The site is geared towards frictionless client interaction and absolute brand trust.
+
+> [!IMPORTANT]
+> The primary metric for this site is converting digital awe into high-value consultations.
+
+- **Consultation Engine:** Clean, context-aware forms specifically titled "Request a Design Consultation" handling project types and budgets.
+- **Frictionless Downloads:** Embedded access to the *Corporate Profile* PDF.
+- **Omnichannel Contact:** Strategic placement of WhatsApp prompt alongside classic email/phone.
+- **Trust Signals:** Direct integration of esteemed association badges (ARCON, RIBA, AIA) into the global footer.
+
+<!-- slide -->
+# 🧠 The Insights Pavilion
+Positioning POPINI Consults not just as builders, but as thought leaders in the African architectural space.
+
+### Content Strategy
+A dedicated `/insights` hub featuring:
+1. **White Papers:** e.g., *Zero-Carbon Retrofitting Guides*
+2. **Editorial Articles:** Trends in tropical tall buildings and vernacular materials.
+3. **Video Analyses:** Masterplan walk-throughs and site strategy breakdowns.
+
+*Designed to capture top-of-funnel traffic driven by architectural research and sustainability SEO.*
+
+<!-- slide -->
+# 🚀 Deployment & DevOps Architecture
+Configured for zero-downtime deploys on Netlify.
+
+```toml
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+```
+
+### Key CI/CD Benefits
+- **Edge Rendering:** The Next.js plugin ensures API routes and dynamic assets hit the Netlify edge.
+- **Image Optimization:** Strict whitelisting in `next.config.ts` ensures only trusted CDNs (like Unsplash for mockups) serve high-res imagery, compressed losslessly on the fly.
+- **Zero Errors:** The current build executes `npm run lint` and `npm run build` flawlessly.
+
+<!-- slide -->
+# 🏁 Conclusion & Next Steps
+
+The POPINI Consults website is no longer just a brochure; it is a **highly performant digital flagship**. 
+
+### Action Items
+1. **Review Local Build:** Execute `npm run dev` to experience the motion physics and new routes.
+2. **Content Audit:** Replace mock Unsplash imagery and placeholder text with actual POPINI Consults assets.
+3. **Deploy:** Push to Netlify for live staging and final Q&A.
+
+**Thank You.**
+````

@@ -24,6 +24,7 @@ export default function Navbar() {
         { title: "Services", href: "/services" },
         { title: "Consultancy", href: "/consultancy" },
         { title: "Projects", href: "/projects" },
+        { title: "Insights", href: "/insights" },
         { title: "Contact", href: "/contact" },
     ];
 
